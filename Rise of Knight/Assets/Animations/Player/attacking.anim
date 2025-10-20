@@ -87,4 +87,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.16666667
+    functionName: PlayerSFX
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: f86d4d1e36c2ee04e96cd09f566c468e, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

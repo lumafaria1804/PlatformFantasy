@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Climbable
+  - Void
+  - Climb
   layers:
   - Default
   - TransparentFX
@@ -13,10 +14,10 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
-  - 
+  - Void
+  - Enemies
+  - Platform
+  - Detection Wall
   - 
   - 
   - 

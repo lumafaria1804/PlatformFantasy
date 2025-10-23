@@ -39,7 +39,6 @@ public class Player : MonoBehaviour
     private bool isDeath;
     private bool canTakeHit = true;
     private bool isInvulnerable;
-    private bool isStunned;
     public bool doubleJump;
 
     #region Propriedades públicas (acessadas pelo PlayerAnim)
@@ -79,12 +78,6 @@ public class Player : MonoBehaviour
     #region Movimentação
     void OnMove()
     {
-        if (isStunned)
-        {
-            rig.linearVelocity = Vector2.zero;
-            return;
-        }
-
         if (isAttacking) return;
 
         movement = Input.GetAxis("Horizontal");
@@ -203,40 +196,26 @@ public class Player : MonoBehaviour
         if (health <= 0.01f)
         {
             StartCoroutine(DeathSequence());
-
-            if (lifePoints <= 0)
-            {
-                // GAME OVER
-            }
+            return; 
         }
-
-        //StartCoroutine(StunTime());
 
         StartCoroutine(RecoveryTime());
     }
 
-    //private IEnumerator StunTime()
-    //{
-    //    isInvulnerable = true;
-    //    isStunned = true;
-    //    yield return new WaitForSeconds(1.5f);
-    //    isStunned = false;
-    //    isHit = false;   
-    //}
-
     private IEnumerator RecoveryTime()
     {
+        yield return new WaitForSeconds(0.01f);
+        isHit = false;
         canTakeHit = false;
         isInvulnerable = true;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         canTakeHit = true;
-        isInvulnerable = false;
+        isInvulnerable = false;   
     }
 
     public IEnumerator DeathSequence()
     {
         isDeath = true;
-        isStunned = true;
         isAttacking = false;
         rig.linearVelocity = Vector2.zero;
 
